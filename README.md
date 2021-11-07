@@ -61,7 +61,7 @@ Reference implementations that are guaranteed to work:
 
 #### ERC223
 
-```
+```solidity
 contract ERC223 {
   uint public totalSupply;
   function balanceOf(address who) constant public returns (uint);
@@ -80,7 +80,7 @@ contract ERC223 {
 
 #### ERC20
 
-```
+```solidity
 contract ERC20 {
   function totalSupply() public view returns (uint);
   function balanceOf(address holder) public view returns (uint);
