@@ -19,7 +19,8 @@
     "typechain": "typechain --target=web3-v1 'abis/*.json' --out-dir 'build/types'",
     "prepublish": "npm run build",
     "clean:dist": "rm -rf build types",
-    "abis": "node scripts/abis.js"
+    "abis": "node scripts/abis.js",
+    "add:params": "node scripts/add-log-params"
   },
   "repository": {
     "type": "git",

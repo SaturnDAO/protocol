@@ -21,14 +21,3 @@ if (existsSync(buildfolder)) for (const file of readdirSync(buildfolder)) {
   writeFileSync(join(abifolder, file), JSON.stringify(files[contractName], null, ' '))
   console.log(`ABI Interfaces created`, file)
 }
-
-/**
- * adding LogParams to generated files
- * ```ts
- * export declare type NewOrderLogParams = NewOrder['returnValues']
- * export declare type TradeLogParams = Trade['returnValues']
- * export declare type OrderCancelledLogParams = OrderCancelled['returnValues']
- * export declare type OrderFulfilledLogParams = OrderFulfilled['returnValues']
- * export declare type MinedLogParams = Mined['returnValues']
- * ```
- */
