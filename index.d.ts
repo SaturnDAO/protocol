@@ -32,15 +32,13 @@ export interface DeployedInformation {
 }
 
 export declare const contracts: {
-  _web3?: Web3
   etc: {
-    latest: DeployedInformation,
-    enceladus: DeployedInformation,
-    mimas: DeployedInformation
-  }
-  create: typeof create
-  set web3(web3: Web3)
-  get web3(): Web3
+    latest: DeployedInformation;
+    enceladus: DeployedInformation;
+    mimas: DeployedInformation;
+  };
+  create: typeof create;
+  web3: Web3;
 }
 
 /**
