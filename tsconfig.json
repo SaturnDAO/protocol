@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "module": "commonjs",
+        "target": "es2017",
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./types",
+        "declaration": true,
+        "allowJs": true,
+        "moduleResolution": "node",
+        "noUnusedLocals": false,
+        "removeComments": false,
+        "pretty": true,
+    },
+    "include": [
+        "build/types"
+    ],
+    "exclude": [
+        "node_modules",
+        "./test/**.test.js",
+        "./migrations",
+        "truffle-config.js",
+        "./test",
+        "./types",
+        "./scripts",
+        "./contract",
+        "./utils",
+        "./lib",
+        "./docs"
+    ]
+}

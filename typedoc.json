@@ -1,0 +1,16 @@
+{
+  "name": "protocol",
+  "out": "docs",
+  "excludeExternals": true,
+  "readme" : "./README.md",
+  "entryPoints": [
+    "./build/types"
+  ],
+  "exclude": [
+    "**/module/sql/files",
+    "**/module/tests/*",
+    "**/.next/**/*",
+    "**/next-env.d.ts",
+    "**/next.config.js"
+  ]
+}
