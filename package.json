@@ -1,0 +1,52 @@
+{
+  "name": "@saturnnetwork/protocol",
+  "version": "0.0.1",
+  "description": "",
+  "directories": {
+    "test": "test",
+    ".scripts": ".scripts"
+  },
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "trace": "MODE=trace npx truffle test",
+    "flatten": "truffle-flattener ./contracts/Exchange.sol > ./build/Exchange.sol",
+    "compile": "npx truffle compile --quiet",
+    "remixd": "npx remixd --remix-ide https://remix.ethereum.org -s contracts",
+    "ganache": "npx ganache-cli --port 8549",
+    "reinstall": "rm -rf node_modules yarn.lock types abis build && yarn",
+    "build": "npm run compile && npm run typechain && npm run abis && npm run flatten",
+    "typechain": "typechain --target=web3-v1 'build/contracts/*.json' --out-dir 'build/types'",
+    "prepublish": "npm run build",
+    "clean:dist": "rm -rf build types",
+    "abis": "node scripts/abis.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaturnDAO/protocol.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaturnDAO/protocol/issues"
+  },
+  "homepage": "https://github.com/SaturnDAO/protocol#readme",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^3.1.0",
+    "@typechain/web3-v1": "^4.0.0",
+    "@types/graceful-fs": "^4.1.5",
+    "@types/lodash": "^4.14.149",
+    "@types/node": "^13.7.0",
+    "dotenv": "^10.0.0",
+    "graceful-fs": "^4.2.8",
+    "lodash": "^4.17.21",
+    "truffle-flattener": "^1.5.0",
+    "typechain": "^6.0.2",
+    "typescript": "4.4"
+  },
+  "dependencies": {
+    "web3": "^1.6.0",
+    "web3-utils": "^1.6.0"
+  }
+}
