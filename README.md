@@ -5,12 +5,45 @@ Learn more:
 * Website -> https://saturn.network
 * Deployed on ETH -> https://etherscan.io/address/0xaA5bBD5A177A588b9F213505cA3740b444Dbd586#code
 
+Installation:
+
+* `yarn add https://github.com/SaturnDAO/protocol`
+
 ### Disclaimer
 
 **Team Saturn accepts no responsibility for any lost funds due to tokens not being compatible with Saturn Protocol's order book contracts. If any of the trading tests outlined in our self listing guide fail for your token, then do not announce your listing as your token's smart contract is not compatible with our exchange protocol. Reach out via the form below and we will investigate together.**
 
 [Contact Team Saturn](https://forms.gle/QjtUYcbttCeyUfK48)
 
+
+### Upgrades
+* added truffle env
+* added typechain
+* exports `create` function
+
+### Example
+
+```ts
+import Web3 from 'web3'
+import { create, abi, bytecode } from '@saturnnetwork/protocol'
+
+import type { 
+  Exchange, NewOrder, Trade, Mined,
+  OrderCancelled, OrderFulfilled, ERC20
+} from '@saturnnetwork/protocol'
+
+const web3: Web3 = new Web3(new Web3.providers.HttpProvider('https://ethercluster.com/etc'))
+const contractAddress = '0x5EF83Ab1155786f146c5A00722bEF7aB683Dc0DE'
+
+const exchange = create(web3, contractAddress)
+
+exchange.methods.treasury().call().then(async treasury => {
+  console.log(treasury)
+  console.log(bytecode)
+  console.log(abi)
+})
+
+```
 ### Supported tokens
 
 The protocol supports self-listing of properly developed ERC20 and ERC223 standard tokens. Most tokens, such as [SATURN](https://etherscan.io/token/0xb9440022a095343b440d590fcd2d7a3794bd76c8), [DAI](https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f), [LINK](https://etherscan.io/token/0x514910771af9ca656af840dff83e8264ecf986ca) are tradable out of the box.
