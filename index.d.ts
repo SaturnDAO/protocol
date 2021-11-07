@@ -8,15 +8,7 @@ export declare const abi: AbiItem[];
 export declare const bytecode: string;
 export declare const version: string;
 
-export type {
-  EventOptions,
-  Exchange,
-  Mined as MinedEvent,
-  NewOrder as NewOrderEvent,
-  OrderCancelled as OrderCancelledEvent,
-  OrderFulfilled as  OrderFulfilledEvent,
-  Trade as TradeEvent
-} from './types/Exchange';
+export type { Exchange } from './types/Exchange';
 
 /**
  * Old implementation of Saturn Protocol.
