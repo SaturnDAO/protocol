@@ -14,7 +14,6 @@ export declare type NewOrder = ContractEventLog<{
     owner: string;
     sellToken: string;
     buyToken: string;
-    ring: string;
     amount: string;
     priceMul: string;
     priceDiv: string;
@@ -27,7 +26,6 @@ export declare type NewOrder = ContractEventLog<{
     5: string;
     6: string;
     7: string;
-    8: string;
 }>;
 export declare type OrderCancelled = ContractEventLog<{
     id: string;
@@ -47,7 +45,6 @@ export declare type Trade = ContractEventLog<{
     orderId: string;
     soldTokens: string;
     boughtTokens: string;
-    feePaid: string;
     time: string;
     0: string;
     1: string;
@@ -55,7 +52,6 @@ export declare type Trade = ContractEventLog<{
     3: string;
     4: string;
     5: string;
-    6: string;
 }>;
 export declare type Mined = ContractEventLog<{
     trader: string;
@@ -65,33 +61,29 @@ export declare type Mined = ContractEventLog<{
     1: string;
     2: string;
 }>;
-export interface Exchange extends BaseContract {
-    constructor(jsonInterface: any[], address?: string, options?: ContractOptions): Exchange;
-    clone(): Exchange;
+export interface Mimas extends BaseContract {
+    constructor(jsonInterface: any[], address?: string, options?: ContractOptions): Mimas;
+    clone(): Mimas;
     methods: {
         orderCount(): NonPayableTransactionObject<string>;
+        getSellTokenAmount(buyTokenAmount: number | string | BN, orderId: number | string | BN): NonPayableTransactionObject<string>;
+        cancelOrder(orderId: number | string | BN): NonPayableTransactionObject<void>;
         feeMul(): NonPayableTransactionObject<string>;
         treasury(): NonPayableTransactionObject<string>;
         tradeMiningMul(): NonPayableTransactionObject<string>;
+        calcFees(amount: number | string | BN, orderId: number | string | BN): NonPayableTransactionObject<string>;
+        remainingAmount(orderId: number | string | BN): NonPayableTransactionObject<string>;
         feeDiv(): NonPayableTransactionObject<string>;
+        buyOrderWithEth(orderId: number | string | BN): PayableTransactionObject<void>;
+        tokenFallback(from: string, value: number | string | BN, data: string | number[]): NonPayableTransactionObject<void>;
+        tradeMiningAmount(fees: number | string | BN, orderId: number | string | BN): NonPayableTransactionObject<string>;
         tradeMiningBalance(): NonPayableTransactionObject<string>;
-        tradeMiningDiv(): NonPayableTransactionObject<string>;
+        sellEther(buyToken: string, priceMul: number | string | BN, priceDiv: number | string | BN): PayableTransactionObject<string>;
         getBalance(token: string, user: string): NonPayableTransactionObject<string>;
         isOrderActive(orderId: number | string | BN): NonPayableTransactionObject<boolean>;
-        remainingAmount(orderId: number | string | BN): NonPayableTransactionObject<string>;
-        getBuyTokenAmount(desiredSellTokenAmount: number | string | BN, orderId: number | string | BN): NonPayableTransactionObject<string>;
-        calcFees(amount: number | string | BN, orderId: number | string | BN): NonPayableTransactionObject<string>;
-        tradeMiningAmount(fees: number | string | BN, orderId: number | string | BN): NonPayableTransactionObject<string>;
         withdrawTradeMining(): NonPayableTransactionObject<void>;
-        changeTradeMiningPrice(newMul: number | string | BN, newDiv: number | string | BN): NonPayableTransactionObject<void>;
-        tokenFallback(from: string, value: number | string | BN, data: string | number[]): NonPayableTransactionObject<void>;
-        sellEther(buyToken: string, priceMul: number | string | BN, priceDiv: number | string | BN): PayableTransactionObject<string>;
-        sellEtherWithRing(buyToken: string, priceMul: number | string | BN, priceDiv: number | string | BN, ring: string): PayableTransactionObject<string>;
-        buyOrderWithEth(orderId: number | string | BN): PayableTransactionObject<void>;
-        sellERC20Token(sellToken: string, buyToken: string, amount: number | string | BN, priceMul: number | string | BN, priceDiv: number | string | BN): NonPayableTransactionObject<string>;
-        sellERC20TokenWithRing(sellToken: string, buyToken: string, amount: number | string | BN, priceMul: number | string | BN, priceDiv: number | string | BN, ring: string): NonPayableTransactionObject<string>;
-        buyOrderWithERC20Token(orderId: number | string | BN, token: string, amount: number | string | BN): NonPayableTransactionObject<void>;
-        cancelOrder(orderId: number | string | BN): NonPayableTransactionObject<void>;
+        tradeMiningDiv(): NonPayableTransactionObject<string>;
+        getBuyTokenAmount(desiredSellTokenAmount: number | string | BN, orderId: number | string | BN): NonPayableTransactionObject<string>;
     };
     events: {
         NewOrder(cb?: Callback<NewOrder>): EventEmitter;
