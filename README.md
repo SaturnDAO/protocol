@@ -41,7 +41,16 @@ exchange.methods.treasury().call().then(async treasury => {
   console.log(treasury)
   console.log(bytecode)
   console.log(abi)
+
+  const enceladus: Exchange = <any> new web3.eth.Contract(
+    abi, '0x3ec00ee8a4fbe81e7eea328029ce490654e8e11a'
+  )
+
+  const treasury2 = await enceladus.methods.treasury().call()
+
+  console.log(treasury2)
 })
+
 
 ```
 ### Supported tokens
