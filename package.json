@@ -1,6 +1,6 @@
 {
   "name": "@saturnnetwork/protocol",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "directories": {
     "test": "test",
@@ -16,7 +16,7 @@
     "ganache": "npx ganache-cli --port 8549",
     "reinstall": "rm -rf node_modules yarn.lock types abis build && yarn",
     "build": "npm run compile && npm run typechain && npm run abis && npm run flatten",
-    "typechain": "typechain --target=web3-v1 'build/contracts/*.json' --out-dir 'build/types'",
+    "typechain": "typechain --target=web3-v1 'abis/*.json' --out-dir 'build/types'",
     "prepublish": "npm run build",
     "clean:dist": "rm -rf build types",
     "abis": "node scripts/abis.js"

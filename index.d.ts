@@ -2,9 +2,11 @@ import type Web3 from 'web3';
 import type { Contract } from 'web3-eth-contract'
 import type { AbiItem } from 'web3-utils';
 import type { Exchange } from './types/Exchange'
+import type { Mimas } from './types/Mimas'
 
 export declare const abi: AbiItem[];
 export declare const bytecode: string;
+export declare const version: string;
 
 export type {
   EventOptions,
@@ -16,7 +18,37 @@ export type {
   Trade as TradeEvent
 } from './types/Exchange';
 
-export type { ERC20 } from './types/ERC20';
+/**
+ * Old implementation of Saturn Protocol.
+ * Supports `Enceladus` and `Mimas` contract
+ */
+export type { Mimas } from './types/Mimas';
+
+export declare function create(): Exchange;
+export declare function create(web3: Web3): Exchange;
+export declare function create(contractAddress: string): Exchange;
+export declare function create(contractAddress: '0x5EF83Ab1155786f146c5A00722bEF7aB683Dc0DE', web3?: Web3 ): Exchange;
+export declare function create(contractAddress: '0x3EC00Ee8a4fbE81e7eeA328029ce490654e8e11a', web3?: Web3 ) : Mimas;
+export declare function create(contractAddress: '0xA4632e7e8c8559CE094394adEa72EFC4Cb3D2c87', web3?: Web3 ): Mimas;
+export declare function create(contractAddress: 'latest', web3?: Web3 ): Exchange;
+export declare function create(contractAddress: 'enceladus', web3?: Web3 ): Mimas;
+export declare function create(contractAddress: 'mimas', web3?: Web3 ): Mimas;
+
+export interface DeployedInformation {
+  address: string, startblock: number, abi: AbiItem[]
+}
+
+export declare const contracts: {
+  _web3?: Web3
+  etc: {
+    latest: DeployedInformation,
+    enceladus: DeployedInformation,
+    mimas: DeployedInformation
+  }
+  create: typeof create
+  set web3(web3: Web3)
+  get web3(): Web3
+}
 
 /**
  * creates a typed Exchage Contract instance
@@ -24,7 +56,7 @@ export type { ERC20 } from './types/ERC20';
  * @param contractAddress {string}
  * @returns
  */
-export declare function create(web3: Web3, contractAddress: string): Exchange;
+export declare function create(contractAddress: string, web3?: Web3): Exchange;
 
 
 export type Blockchains = 'ETC' | 'ETH' | 'PHX' | 'DAO' | 'AOA' | 'AOAT'
