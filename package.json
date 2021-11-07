@@ -9,17 +9,15 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "typechain": "typechain --target=web3-v1 'build/contracts/*.json' --out-dir 'build/types'",
     "trace": "MODE=trace npx truffle test",
     "flatten": "truffle-flattener ./contracts/Exchange.sol > ./build/Exchange.sol",
     "compile": "npx truffle compile --quiet",
     "remixd": "npx remixd --remix-ide https://remix.ethereum.org -s contracts",
     "ganache": "npx ganache-cli --port 8549",
     "reinstall": "rm -rf node_modules yarn.lock types abis build && yarn",
-    "build": "npm run trace && npm run compile && npm run typechain && npm run abis",
-    "create-typedoc": "npx typedoc",
-    "serve-typedocs": "PORT=5000 npx serve docs",
-    "typedocs": "npm run create-typedoc && npm run serve-typedocs",
+    "build": "npm run compile && npm run typechain && npm run abis && npm run flatten",
+    "typechain": "typechain --target=web3-v1 'build/contracts/*.json' --out-dir 'build/types'",
+    "prepublish": "npm run build",
     "clean:dist": "rm -rf build types",
     "abis": "node scripts/abis.js"
   },
@@ -36,7 +34,6 @@
   "homepage": "https://github.com/SaturnDAO/protocol#readme",
   "devDependencies": {
     "@openzeppelin/contracts": "^3.1.0",
-    "@typechain/truffle-v5": "^6.0.0",
     "@typechain/web3-v1": "^4.0.0",
     "@types/graceful-fs": "^4.1.5",
     "@types/lodash": "^4.14.149",
@@ -45,7 +42,6 @@
     "graceful-fs": "^4.2.8",
     "lodash": "^4.17.21",
     "truffle-flattener": "^1.5.0",
-    "ts-node": "^8.10.1",
     "typechain": "^6.0.2",
     "typescript": "4.4"
   },
