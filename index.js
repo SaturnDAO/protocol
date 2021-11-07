@@ -59,3 +59,9 @@ exports.contracts = {
     return this._web3
   }
 }
+
+exports.isOrder = function (obj) {
+  return (
+    'active' in obj && 'balance' in obj && 'type' in obj && 'order_id' in obj
+  )
+}

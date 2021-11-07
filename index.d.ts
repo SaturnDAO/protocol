@@ -34,6 +34,7 @@ export declare function create(contractAddress: 'latest', web3?: Web3 ): Exchang
 export declare function create(contractAddress: 'enceladus', web3?: Web3 ): Mimas;
 export declare function create(contractAddress: 'mimas', web3?: Web3 ): Mimas;
 
+export declare function isOrder(obj: any): obj is Order
 export interface DeployedInformation {
   address: string, startblock: number, abi: AbiItem[]
 }
