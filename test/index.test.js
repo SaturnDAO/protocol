@@ -1,5 +1,5 @@
 const Web3 = require('web3')
-const { create, contracts } = require('..')
+const { create, contracts, isOrder, isTradebook } = require('..')
 const web3 = new Web3(new Web3.providers.HttpProvider(
   'http://localhost:8545'
 ))

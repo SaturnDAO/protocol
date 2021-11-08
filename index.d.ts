@@ -7,6 +7,8 @@ import type { Mimas } from './types/Mimas'
 export declare const abi: AbiItem[];
 export declare const bytecode: string;
 export declare const version: string;
+export declare const blockchains: Blockchains[]
+export declare const exchangeEventNames: ExchangeEventNames[]
 
 export type { Exchange } from './types/Exchange';
 
@@ -26,7 +28,15 @@ export declare function create(contractAddress: 'latest', web3?: Web3 ): Exchang
 export declare function create(contractAddress: 'enceladus', web3?: Web3 ): Mimas;
 export declare function create(contractAddress: 'mimas', web3?: Web3 ): Mimas;
 
-export declare function isOrder(obj: any): obj is Order
+export declare function isOrder(obj: any): obj is Order;
+export declare function isTrade(obj: any): obj is Trade;
+export declare function isOrderbook(obj: any): obj is Orderbook;
+export declare function isTradebook(obj: any): obj is Tradebook;
+export declare function isTokenSummary(obj: any): obj is TokenSummary;
+export declare function isDetailedTokenSummary(obj: any): obj is DetailedTokenSummary;
+
+export declare function isExchangeEventName(obj: any): obj is ExchangeEventNames;
+export declare function isSupportedBlockchain(obj: any): obj is Blockchains;
 export interface DeployedInformation {
   address: string, startblock: number, abi: AbiItem[]
 }
