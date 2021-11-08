@@ -4,7 +4,7 @@ const mimas = require('./abis/Mimas.json')
 
 exports.abi = abi
 exports.bytecode = bytecode
-exports.version = '0.0.2'
+exports.version = '0.0.3'
 
 /**
  * Returns a typed Exchange Contract
