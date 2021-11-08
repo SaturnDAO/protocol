@@ -1,6 +1,6 @@
 const Web3 = require('web3')
 const { abi, bytecode } = require('./abis/Exchange.json')
-const mimas = require('./abis/Exchange.json')
+const mimas = require('./abis/Mimas.json')
 
 exports.abi = abi
 exports.bytecode = bytecode

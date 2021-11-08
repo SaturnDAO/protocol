@@ -37,11 +37,9 @@
     "@openzeppelin/contracts": "^3.1.0",
     "@typechain/web3-v1": "^4.0.0",
     "@types/graceful-fs": "^4.1.5",
-    "@types/lodash": "^4.14.149",
     "@types/node": "^13.7.0",
     "dotenv": "^10.0.0",
     "graceful-fs": "^4.2.8",
-    "lodash": "^4.17.21",
     "truffle-flattener": "^1.5.0",
     "typechain": "^6.0.2",
     "typescript": "4.4"
