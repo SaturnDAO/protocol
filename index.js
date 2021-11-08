@@ -11,7 +11,7 @@ exports.version = '0.0.2'
  * @param contractAddress {string}
  * @param web3 {Web3}
  */
-function create(contractAddress, web3 ) {
+function create(contractAddress, web3) {
   if (typeof web3 === 'undefined') web3 = new Web3()
 
   const oldExchanges = [
@@ -24,7 +24,7 @@ function create(contractAddress, web3 ) {
     if (contractAddress === 'enceladus') contractAddress = '0x3ec00ee8a4fbe81e7eea328029ce490654e8e11a'
     if (contractAddress === 'latest') contractAddress = '0x5ef83ab1155786f146c5a00722bef7ab683dc0de'
 
-    return new web3.eth.Contract(mimas.abi, contractAddress)
+    return new web3.eth.Contract(mimas, contractAddress)
   } else {
     return new web3.eth.Contract(abi, contractAddress || '0x5ef83ab1155786f146c5a00722bef7ab683dc0de')
   }
