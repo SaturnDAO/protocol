@@ -7,16 +7,10 @@ import type { Mimas } from './types/Mimas'
 export declare const abi: AbiItem[];
 export declare const bytecode: string;
 export declare const version: string;
+export declare const blockchains: Blockchains[]
+export declare const exchangeEventNames: ExchangeEventNames[]
 
-export type {
-  EventOptions,
-  Exchange,
-  Mined as MinedEvent,
-  NewOrder as NewOrderEvent,
-  OrderCancelled as OrderCancelledEvent,
-  OrderFulfilled as  OrderFulfilledEvent,
-  Trade as TradeEvent
-} from './types/Exchange';
+export type { Exchange } from './types/Exchange';
 
 /**
  * Old implementation of Saturn Protocol.
@@ -34,20 +28,27 @@ export declare function create(contractAddress: 'latest', web3?: Web3 ): Exchang
 export declare function create(contractAddress: 'enceladus', web3?: Web3 ): Mimas;
 export declare function create(contractAddress: 'mimas', web3?: Web3 ): Mimas;
 
+export declare function isOrder(obj: any): obj is Order;
+export declare function isTrade(obj: any): obj is Trade;
+export declare function isOrderbook(obj: any): obj is Orderbook;
+export declare function isTradebook(obj: any): obj is Tradebook;
+export declare function isTokenSummary(obj: any): obj is TokenSummary;
+export declare function isDetailedTokenSummary(obj: any): obj is DetailedTokenSummary;
+
+export declare function isExchangeEventName(obj: any): obj is ExchangeEventNames;
+export declare function isSupportedBlockchain(obj: any): obj is Blockchains;
 export interface DeployedInformation {
   address: string, startblock: number, abi: AbiItem[]
 }
 
 export declare const contracts: {
-  _web3?: Web3
   etc: {
-    latest: DeployedInformation,
-    enceladus: DeployedInformation,
-    mimas: DeployedInformation
-  }
-  create: typeof create
-  set web3(web3: Web3)
-  get web3(): Web3
+    latest: DeployedInformation;
+    enceladus: DeployedInformation;
+    mimas: DeployedInformation;
+  };
+  create: typeof create;
+  web3: Web3;
 }
 
 /**

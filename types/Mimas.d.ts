@@ -8,7 +8,7 @@ export interface EventOptions {
     filter?: object;
     fromBlock?: BlockType;
     topics?: string[];
-}
+} 
 export declare type NewOrder = ContractEventLog<{
     id: string;
     owner: string;
@@ -109,3 +109,20 @@ export interface Mimas extends BaseContract {
     once(event: "Mined", cb: Callback<Mined>): void;
     once(event: "Mined", options: EventOptions, cb: Callback<Mined>): void;
 }
+
+// Params of parsed Event Logs (AbiDecoder)
+
+/** NewOrder LogParams */
+export declare type NewOrderLogParams = NewOrder['returnValues']
+
+/** NewOrder LogParams */
+export declare type TradeLogParams = Trade['returnValues']
+
+/** NewOrder LogParams */
+export declare type OrderCancelledLogParams = OrderCancelled['returnValues']
+
+/** NewOrder LogParams */
+export declare type OrderFulfilledLogParams = OrderFulfilled['returnValues']
+
+/** NewOrder LogParams */
+export declare type MinedLogParams = Mined['returnValues']
