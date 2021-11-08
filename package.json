@@ -20,7 +20,8 @@
     "prepublish": "npm run build",
     "clean:dist": "rm -rf build types",
     "abis": "node scripts/abis.js",
-    "add:params": "node scripts/add-log-params"
+    "add:params": "node scripts/add-log-params",
+    "test": "mocha 'test/**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,10 @@
     "dotenv": "^10.0.0",
     "graceful-fs": "^4.2.8",
     "truffle-flattener": "^1.5.0",
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3",
+    "@types/chai": "^4.2.22",
+    "@types/mocha": "^9.0.0",
     "typechain": "^6.0.2",
     "typescript": "4.4"
   },

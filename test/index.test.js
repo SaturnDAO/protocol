@@ -1,30 +1,35 @@
+
 const Web3 = require('web3')
-const { create, contracts, isOrder, isTradebook } = require('..')
-const web3 = new Web3(new Web3.providers.HttpProvider(
-  'http://localhost:8545'
-))
+const { isAddress } = require('web3-utils')
+const { expect } = require('chai')
+const { create, contracts } = require('..')
 
-const exchange = create('enceladus', web3)
+describe('Testing Contract', () => {
+  const web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+  
+  it('should query the treasury addres', async () => {
+    const exchange = create('enceladus', web3)
+    const treasury = await exchange.methods.treasury().call()
+    expect(isAddress(treasury)).to.be.true
+  })
 
-exchange.methods.treasury().call().then(async treasury => {
-  const hasNoWeb3 = contracts.create('enceladus')
+  it('should error, because no provider is set', async () => {
+    const hasNoWeb3 = contracts.create('enceladus')
+    try {
+      await hasNoWeb3.methods.treasury().call()
+    }catch(error){
+      expect(error).not.undefined
+    }
+  })
 
-  await hasNoWeb3.methods
-    .treasury().call()
-    .then(() => console.log(`enceladus done`))
-    .catch(async (error) => {
-      console.error(`sucess, enceladus errored`, error['message'])
-
-      // setting web3 to context
-      contracts.web3 = web3
-      console.log('did set web3 to deployed context', contracts.web3.version)
-
-      // spawing new exchange contract, now web3 will be set by default
-      await contracts.create('mimas').methods.treasury().call()
-        .then(() => console.log(`chimas done`))
-        .catch((error) => console.error(`chimas error`, error))
-    })
+  it('should set web3 to deployed context', async () => {
+    contracts.web3 = web3
+    const hasNoWeb3 = contracts.create('mimas')
+    const treasury = await hasNoWeb3.methods.treasury().call()
+    expect(isAddress(treasury)).to.be.true
+  })
 })
+
   
   
   
