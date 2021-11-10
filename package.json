@@ -1,10 +1,10 @@
 {
-  "name": "@saturnnetwork/protocol",
+  "name": "saturn-protocol",
   "version": "0.0.4",
-  "description": "",
+  "description": "Saturn.network DEX Protocol",
   "directories": {
     "test": "test",
-    ".scripts": ".scripts"
+    "scripts": "scripts"
   },
   "main": "index.js",
   "types": "index.d.ts",
@@ -27,9 +27,18 @@
     "type": "git",
     "url": "git+https://github.com/SaturnDAO/protocol.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "saturn.network",
+    "saturn dao",
+    "defi",
+    "blockchain",
+    "dex",
+    "tradig",
+    "evm",
+    "web3",
+    "ethereum"
+  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SaturnDAO/protocol/issues"
   },
