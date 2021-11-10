@@ -25,12 +25,12 @@ Installation:
 
 ```ts
 import Web3 from 'web3'
-import { create, abi, bytecode } from '@saturnnetwork/protocol'
+import { create, abi, bytecode } from 'saturn-protocol'
 
 import type { 
   Exchange, NewOrder, Trade, Mined,
   OrderCancelled, OrderFulfilled, ERC20
-} from '@saturnnetwork/protocol'
+} from 'saturn-protocol'
 
 const web3: Web3 = new Web3(new Web3.providers.HttpProvider('https://ethercluster.com/etc'))
 const contractAddress = '0x5EF83Ab1155786f146c5A00722bEF7aB683Dc0DE'
