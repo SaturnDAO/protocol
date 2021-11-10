@@ -1,4 +1,4 @@
-# Saturn Protocol
+# saturn-protocol
 
 Learn more:
 
@@ -7,7 +7,7 @@ Learn more:
 
 Installation:
 
-* `yarn add https://github.com/SaturnDAO/protocol`
+* `yarn add saturn-protocol` or `npm install saturn-protocol`
 
 ### Disclaimer
 
