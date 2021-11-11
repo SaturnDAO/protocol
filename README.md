@@ -25,7 +25,7 @@ Installation:
 
 ```ts
 import Web3 from 'web3'
-import { create, abi, bytecode } from '@saturnnetwork/protocol'
+import { create, abi, bytecode } from 'saturn-protocol'
 
 import type { 
   Exchange, NewOrder, Trade, Mined,
